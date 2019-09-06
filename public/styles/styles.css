@@ -17,11 +17,62 @@ time, mark, audio, video {
   font-size: 100%;
   font-family: "Varela Round", sans-serif;
   vertical-align: baseline;
+  text-decoration: none;
+}
+
+body {
+  color: #566787;
+  background: #f5f5f5;
 }
 
 .container {
-  width: 100vw;
+  width: 85vw;
+  margin: 0 auto;
   box-sizing: border-box;
+}
+
+.table-wrapper {
+  background: #fff;
+  padding: 20px 25px;
+  margin: 40px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.table-wrapper .table-title {
+  background: #435d7d;
+  color: #fff;
+  padding: 16px 30px;
+  margin: -20px -25px 10px;
+  border-radius: 3px 3px 0 0;
+}
+.table-wrapper .table-title .title-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.table-wrapper .table-title .title-wrapper .title {
+  font-size: 24px;
+  line-height: 36px;
+}
+.table-wrapper .table-title .title-wrapper .title h2 {
+  font-weight: 300;
+}
+.table-wrapper .table-title .title-wrapper .title b {
+  font-weight: 700;
+}
+.table-wrapper .table-title .title-wrapper .btn-container {
+  margin-left: 10px;
+}
+.table-wrapper .table-title .title-wrapper .btn-container .btn {
+  font-size: 13px;
+  border-radius: 2px;
+  background-color: #5cb85c;
+  color: #fff;
+  padding: 6px 12px;
+  line-height: 24px;
+  display: flex;
+  justify-content: space-between;
+}
+.table-wrapper .table-title .title-wrapper .btn-container .btn .material-icons {
+  margin-right: 5px;
 }
 
 /*# sourceMappingURL=styles.css.map */
