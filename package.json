@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "build-css": "sass public/styles/styles.scss public/styles/styles.css --watch"
   },
   "author": "",
   "license": "ISC",
