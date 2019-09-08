@@ -75,4 +75,71 @@ body {
   margin-right: 5px;
 }
 
+.row {
+  overflow: hidden;
+}
+.row #search {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: grey;
+  float: right;
+  margin-top: 20px;
+}
+
+.table {
+  margin: 20px 0;
+  width: 100%;
+  font-size: 13px;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+.table thead tr th {
+  border-bottom: 2px solid #ddd;
+}
+.table thead tr th .custom-checkbox {
+  position: relative;
+}
+.table thead tr th .custom-checkbox #select-all {
+  opacity: 0;
+}
+.table thead tr th .custom-checkbox label::before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  background: white;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.table thead tr th .custom-checkbox #select-all:checked + label::before {
+  background-color: #03a9f4;
+}
+.table thead tr th .custom-checkbox #select-all:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 11px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  z-index: 3;
+  transform: rotateZ(45deg);
+}
+.table tbody tr {
+  background-color: #fcfcfc;
+}
+
 /*# sourceMappingURL=styles.css.map */
