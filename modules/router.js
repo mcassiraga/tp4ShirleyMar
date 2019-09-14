@@ -8,9 +8,9 @@ router.get('/', (req, res) => {
 })
 
 // para cargar los datos de la api
-router.get('/api/employee-db', employees)
+router.get('/api/employee-db', employees.handler)
 
 // para postear nuevos datos a la api
-// router.post('/api/employee-db', employees.addEmployee)
+router.post('/api/employee-db', employees.postEmployee)
 
 module.exports = router

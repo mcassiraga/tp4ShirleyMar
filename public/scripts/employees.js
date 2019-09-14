@@ -36,3 +36,48 @@ const getEmployees = () => {
     .then(res => res.json())
     .then(res => printEmployees(res.employees))
 }
+
+// CREAR EMPLEADOS
+const addEmployee = () => {
+    event.preventDefault()
+    const formName = document.getElementById('name')
+    const formEmail = document.getElementById('email')
+    const formAddress = document.getElementById('address')
+    const formPhone = document.getElementById('phone')
+
+    const payload = {
+        name: formName.value,
+        email: formEmail.value,
+        address: formAddress.value,
+        phone: formPhone.value
+    }
+
+    if (payload) {
+        fetch('/api/employee-db', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                formName.value = ''
+                formEmail.value = ''
+                formAddress.value = ''
+                formPhone.value = ''
+                initialize()
+            })
+            .catch((error) => {
+                // acá van otras cositas
+            });
+    } else {}
+}
+
+// FILTRAR EMPLEADOS
+const handleKeyPress = event => {
+    if (event.code === 'Enter') {
+        filterEmployees() // hay que armar esta funcion
+    }
+}
