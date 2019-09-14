@@ -139,8 +139,56 @@ body {
   z-index: 3;
   transform: rotateZ(45deg);
 }
-.table tbody tr {
+.table tbody tr:nth-of-type(2n+1) {
   background-color: #fcfcfc;
+}
+.table tbody tr:hover {
+  background: #f5f5f5;
+}
+.table tbody tr td {
+  padding-bottom: 25px;
+}
+.table tbody tr .option-btns {
+  padding-left: 22px;
+}
+.table tbody tr .option-btns .edit {
+  color: #ffc107;
+}
+.table tbody tr .option-btns .delete {
+  color: #f44336;
+}
+.table tbody tr .custom-checkbox label {
+  position: relative;
+}
+.table tbody tr .custom-checkbox label::before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: text-top;
+  background: white;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 0;
+  left: -20px;
+}
+.table tbody tr .custom-checkbox:checked + label::before {
+  background-color: #03a9f4;
+}
+.table tbody tr .custom-checkbox:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 11px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  z-index: 3;
+  transform: rotateZ(45deg);
 }
 
 .modal {

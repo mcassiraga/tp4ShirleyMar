@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
     <script src="scripts/main.js" type="text/javascript"></script>
+    <script src="scripts/employees.js" type="text/javascript"></script>
     <title>App Empleados</title>
 </head>
 
-<body>
+<body onload="initialize()">
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
@@ -49,16 +50,8 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!--para armar estilos solamente. rellenar con JS-->
-                    <tr>
-                        <td></td>
-                        <td>Bruce wayne</td>
-                        <td>bruce</td>
-                        <td>gotham city</td>
-                        <td>853065673</td>
-                        <td>btns</td>
-                    </tr>
+                <tbody id="employeeList">
+
                 </tbody>
             </table>
         </div>

@@ -3,6 +3,22 @@
 
 // MIXINS
 
+@mixin checkbox($left) {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 0;
+    left: $left
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -128,19 +144,7 @@ body {
                     }
 
                     label::before {
-                        content: '';
-                        margin-right: 10px;
-                        display: inline-block;
-                        vertical-align: text-top;
-                        background: white;
-                        border: 1px solid #bbb;
-                        border-radius: 2px;
-                        box-sizing: border-box;
-                        width: 18px;
-                        height: 18px;
-                        position: absolute;
-                        top: 0;
-                        left: 0;
+                        @include checkbox(0)
                     }
 
 
@@ -167,7 +171,56 @@ body {
 
     tbody {
         tr {
-            background-color: #fcfcfc;
+            &:nth-of-type(2n+1) {
+                background-color: #fcfcfc;
+            }
+
+            &:hover {
+                background: #f5f5f5;
+            }
+
+            td {
+                padding-bottom: 25px;
+            }
+
+            .option-btns {
+                padding-left: 22px;
+
+                .edit {
+                    color:#ffc107
+                }
+
+                .delete {
+                    color:#f44336
+                }
+            }
+
+            .custom-checkbox {
+                label {
+                    position: relative;
+                }
+
+                label::before {
+                    @include checkbox(-20px)
+                }
+
+                &:checked + label::before { // hay que ponerle id a cada uno, sino no funciona
+                    background-color: #03a9f4;
+                }
+
+                &:checked + label::after {
+                    content: '';
+                    position: absolute;
+                    left: 5px;
+                    top: 1px;
+                    width: 5px;
+                    height: 11px;
+                    border: solid #fff;
+                    border-width: 0 3px 3px 0;
+                    z-index: 3;
+                    transform: rotateZ(45deg);
+                }
+            }
         }
     }
 }
