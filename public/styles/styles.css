@@ -150,6 +150,7 @@ body {
 }
 .table tbody tr .option-btns {
   padding-left: 22px;
+  cursor: pointer;
 }
 .table tbody tr .option-btns .edit {
   color: #ffc107;
@@ -234,6 +235,7 @@ body {
 }
 .modal-content .modal-body {
   margin: 30px 0 35px 0;
+  font-size: 13px;
 }
 .modal-content .modal-body .form-group {
   margin: 0 27px 15px 0;
@@ -256,6 +258,12 @@ body {
   background-image: none;
   border: 1px solid #ccc;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.modal-content .modal-body .warning {
+  margin-top: 15px;
+  color: #8a6d3b;
+  font-size: 12px;
+  display: block;
 }
 .modal-content .modal-footer {
   border-radius: 0 0 3px 3px;
@@ -286,6 +294,16 @@ body {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+}
+.modal-content .modal-footer .btn-delete {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.modal-content .modal-footer .btn-edit {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
 }
 
 .show-modal {

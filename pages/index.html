@@ -55,14 +55,16 @@
                 </tbody>
             </table>
         </div>
-        <div class="modal">
+        <!--NEW EMPLOYEE MODAL-->
+        <div id="newEmployeeModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <p>Agregar empleado</p>
                     <span class="close-button">&times;</span>
                 </div>
-                <div class="modal-body">
-                    <form id="form">
+                <form id="form">
+                    <div class="modal-body">
+
                         <div class="form-group">
                             <label>Nombre</label>
                             <input id="name" type="text" class="form-control" required>
@@ -79,14 +81,65 @@
                             <label>Teléfono</label>
                             <input id="phone" type="number" class="form-control" required>
                         </div>
-                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" onclick="toggleModal()" value="Cancelar" />
+                        <input type="submit" class="btn btn-success" onclick="validateForm()" value="Agregar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--DELETE EMPLOYEE MODAL-->
+        <div id="deleteEmployeeModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>Eliminar empleado</p>
+                    <span class="close-button close-delete-button">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>¿Seguro que quiere eliminar a este empleado?</p>
+                    <span class="warning">Esta acción no se puede deshacer.</span>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-default" onclick="toggleModal()" value="Cancelar" />
-                    <input type="submit" class="btn btn-success" onclick="addEmployee()" value="Agregar" />
+                    <input type="button" class="btn btn-default" onclick="toggleDeleteModal()" value="Cancelar" />
+                    <input type="button" class="btn btn-delete" onclick="deleteEmployee()" value="Eliminar" />
                 </div>
             </div>
         </div>
+        <!--EDIT EMPLOYEE MODAL-->
+        <div id="editEmployeeModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p>Editar empleado</p>
+                    <span class="close-button close-edit-button">&times;</span>
+                </div>
+                <form id="form">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input id="name" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input id="email" type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <textarea id="address" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input id="phone" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" onclick="toggleEditModal()" value="Cancelar" />
+                        <input type="button" class="btn btn-edit" onclick="editEmployee()" value="Guardar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 

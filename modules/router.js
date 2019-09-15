@@ -13,4 +13,13 @@ router.get('/api/employee-db', employees.loadEmployees)
 // para postear nuevos datos a la api
 router.post('/api/employee-db', employees.postEmployee)
 
+// para eliminar datos de la api
+router.get('/api/employee-db/:id', employees.getEmployeeByID)
+
+// para modificar datos de la api
+router.patch('/api/employee-db/:id', employees.patchEmployee)
+
+// para eliminar datos
+router.delete('/api/employee-db/:id', employees.deleteEmployee)
+
 module.exports = router

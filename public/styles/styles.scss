@@ -185,6 +185,7 @@ body {
 
             .option-btns {
                 padding-left: 22px;
+                cursor: pointer;
 
                 .edit {
                     color:#ffc107
@@ -272,6 +273,7 @@ body {
 
     .modal-body {
         margin: 30px 0 35px 0;
+        font-size: 13px;
 
         .form-group {
             margin: 0 27px 15px 0;
@@ -296,6 +298,13 @@ body {
                 border: 1px solid #ccc;
                 transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
             }
+        }
+
+        .warning {
+            margin-top: 15px;
+            color: #8a6d3b;
+            font-size: 12px;
+            display: block;
         }
     }
 
@@ -330,6 +339,18 @@ body {
             color: #333;
             background-color: #fff;
             border-color: #ccc;
+        }
+
+        .btn-delete {
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+
+        .btn-edit {
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
         }
     }
 }
