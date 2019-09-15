@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 })
 
 // para cargar los datos de la api
-router.get('/api/employee-db', employees.handler)
+router.get('/api/employee-db', employees.loadEmployees)
 
 // para postear nuevos datos a la api
 router.post('/api/employee-db', employees.postEmployee)

@@ -40,16 +40,14 @@ const getEmployees = () => {
 // CREAR EMPLEADOS
 const addEmployee = () => {
     event.preventDefault()
-    const formName = document.getElementById('name')
-    const formEmail = document.getElementById('email')
-    const formAddress = document.getElementById('address')
-    const formPhone = document.getElementById('phone')
+    const form = document.getElementById('form')
+    const {name, email, address, phone} = form
 
     const payload = {
-        name: formName.value,
-        email: formEmail.value,
-        address: formAddress.value,
-        phone: formPhone.value
+        name: name.value,
+        email: email.value,
+        address: address.value,
+        phone: phone.value
     }
 
     if (payload) {
@@ -63,11 +61,12 @@ const addEmployee = () => {
             .then(res => res.json())
             .then(res => {
                 console.log(res)
-                formName.value = ''
-                formEmail.value = ''
-                formAddress.value = ''
-                formPhone.value = ''
+                name.value = ''
+                email.value = ''
+                address.value = ''
+                phone.value = ''
                 initialize()
+                toggleModal()
             })
             .catch((error) => {
                 // acá van otras cositas
