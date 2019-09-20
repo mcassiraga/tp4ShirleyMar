@@ -2,8 +2,8 @@ const uniqid = require('uniqid')
 
 const employees = [
     { id: '1', name: 'calixta', email: 'calix@ta.com', address: 'fhsdkflah', phone: '79875912' },
-    { id: '2', name: 'calixta', email: 'calix@ta.com', address: 'fhsdkflah', phone: '79875912' },
-    { id: '3', name: 'calixta', email: 'calix@ta.com', address: 'fhsdkflah', phone: '79875912' }
+    { id: '2', name: 'rony', email: 'dgdd@ta.com', address: 'fhsdkflah', phone: '79875912' },
+    { id: '3', name: 'alex', email: 'alex@ta.com', address: 'fhsdkflah', phone: '79875912' }
 ]
 
 const loadEmployees = (req, res, next) => {
@@ -29,28 +29,37 @@ const getEmployeeByID = (req, res, next) => {
         res.json(searchResult)
     } else {
         res.status(404).send('No existe tal usuario')
-    }
+	}
+	next()
 }
 
 const patchEmployee = (req, res, next) => {
 	let data = req.body
-	let index = ''
-	let resEmployee = employees.find((e, i) => {
-		index = i
-		return e.id === req.params.id
-	})
+	let searchResult = employees.find(e => e.id === req.params.id)
+	let index = employees.findIndex(e => e.id === req.params.id)
 
-	if (resEmployee) {
-        let editedEmployee = {...resEmployee, ...data}
+	if (searchResult) {
+		let editedEmployee = {...searchResult, ...data}
+		editedEmployee.id = uniqid()
 		employees.splice(1, index)
 		employees.push(editedEmployee)
+		res.json('usuario editado')
 	} else {
 		res.status(404).send('no encontramos al usuario');
 	}
+	next()
 }
 
 const deleteEmployee = (req, res, next) => {
-	res.send('got a delete request')
+	let searchResult = employees.find(e => e.id === req.params.id)
+	let index = employees.findIndex(e => e.id === req.params.id)
+	if (searchResult) {
+		employees.splice(index, 1)
+		res.status('201').json('Se eliminó el empleado')
+	} else {
+		res.send('No se pudo eliminar el empleado')
+	}
+	next()
 }
 
 module.exports = {loadEmployees, postEmployee, getEmployeeByID, patchEmployee, deleteEmployee}

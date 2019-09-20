@@ -13,7 +13,7 @@ router.get('/api/employee-db', employees.loadEmployees)
 // para postear nuevos datos a la api
 router.post('/api/employee-db', employees.postEmployee)
 
-// para eliminar datos de la api
+// para encontrar empleado por ID
 router.get('/api/employee-db/:id', employees.getEmployeeByID)
 
 // para modificar datos de la api

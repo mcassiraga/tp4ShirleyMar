@@ -14,7 +14,7 @@ const printEmployees = data => {
     data.forEach(e => container.innerHTML += createElements(e))
 }
 
-const createElements = ({name, email, address, phone}) => `
+const createElements = ({id, name, email, address, phone}) => `
   <tr>
     <td>
         <span class="custom-checkbox">
@@ -27,17 +27,17 @@ const createElements = ({name, email, address, phone}) => `
     <td>${address}</td>
     <td>${phone}</td>
     <td class="option-btns">
-        <a class="edit" onclick="toggleEditModal()">
+        <a class="edit" id="${id}" onclick="toggleEditModal(id)">
             <i class="material-icons" title="Editar">&#xE254;</i>
         </a>
-        <a class="delete" onclick="toggleDeleteModal()">
+        <a class="delete" id="${id}" onclick="toggleDeleteModal(id)">
             <i class="material-icons" title="Eliminar">&#xE872;</i>
         </a>
     </td>
   </tr>
 `
 
-// VALIDAR DATOS
+// VALIDAR DATOS - hay que validar dos forms!
 const validateForm = () => {
     const form = document.getElementById('form')
     const {name, email, address, phone} = form
@@ -65,12 +65,8 @@ const addEmployee = payload => {
         .then(res => res.json())
         .then(res => {
             console.log(res)
-            name.value = ''
-            email.value = ''
-            address.value = ''
-            phone.value = ''
-            initialize()
             toggleModal()
+            initialize()
         })
         .catch(error => {
             // acá van otras cositas
@@ -78,25 +74,27 @@ const addEmployee = payload => {
 }
 
 // EDITAR EMPLEADOS
-const editEmployee = (id, payload) => {
-    const form = document.getElementById('form')
+const editEmployee = id => {
+    const form = document.getElementById('edit-form')
     const {name, email, address, phone} = form
+    const data = {
+        name: name.value,
+        email: email.value,
+        address: address.value,
+        phone: phone.value
+    }
 
 	fetch(`/api/employee-db/${id}`, {
 		method: 'PATCH',
 		headers: {
 			'Content-Type': 'application/json'
 		},
-		body: JSON.stringify(payload)
+		body: JSON.stringify(data)
 	})
 		.then(res => res.json())
 		.then(res => {
 			console.log(res);
-			name.value = ''
-            email.value = ''
-            address.value = ''
-            phone.value = ''
-            toggleEditModal()
+            toggleEditModal(id)
 			initialize()
 		})
 		.catch(error => {
@@ -105,9 +103,18 @@ const editEmployee = (id, payload) => {
 }
 
 // ELIMINAR EMPLEADO
-const deleteEmployee = (id) => {
+const deleteEmployee = id => {
     fetch(`/api/employee-db/${id}`, {
         method: 'DELETE',
+        headers: {
+			'Content-Type': 'application/json'
+		}
+    })
+    .then(res => res.json())
+    .then(res => {
+        console.log(res)
+        toggleDeleteModal()
+        initialize()
     })
 }
 

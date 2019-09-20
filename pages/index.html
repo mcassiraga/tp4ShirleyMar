@@ -102,7 +102,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" onclick="toggleDeleteModal()" value="Cancelar" />
-                    <input type="button" class="btn btn-delete" onclick="deleteEmployee()" value="Eliminar" />
+                    <input type="button" class="btn btn-delete" id="btn-delete" value="Eliminar" />
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
                     <p>Editar empleado</p>
                     <span class="close-button close-edit-button">&times;</span>
                 </div>
-                <form id="form">
+                <form id="edit-form">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nombre</label>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" onclick="toggleEditModal()" value="Cancelar" />
-                        <input type="button" class="btn btn-edit" onclick="editEmployee()" value="Guardar" />
+                        <input type="button" class="btn btn-edit" id="btn-edit" value="Guardar" />
                     </div>
                 </form>
             </div>
