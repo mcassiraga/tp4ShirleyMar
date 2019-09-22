@@ -7,8 +7,18 @@ const employees = [
 ]
 
 const loadEmployees = (req, res, next) => {
-    res.json({employees})
+	res.json({employees})
     next()
+}
+
+const searchEmployees = (req, res, next) => {
+	let searchResults = employees.filter(e => e.name === req.query || e.email === req.query || e.address === req.query || e.phone === req.query)
+	if (searchResults.length > 0) {
+		res.json(searchResults)
+	} else {
+		res.send('Ningun resultado')
+	}
+	next()
 }
 
 const postEmployee = (req, res, next) => {
@@ -62,4 +72,4 @@ const deleteEmployee = (req, res, next) => {
 	next()
 }
 
-module.exports = {loadEmployees, postEmployee, getEmployeeByID, patchEmployee, deleteEmployee}
+module.exports = {loadEmployees, searchEmployees, postEmployee, getEmployeeByID, patchEmployee, deleteEmployee}

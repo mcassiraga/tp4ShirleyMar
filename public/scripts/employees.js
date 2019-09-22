@@ -124,3 +124,10 @@ const handleKeyPress = event => {
         filterEmployees() // hay que armar esta funcion
     }
 }
+
+const filterEmployees = () => {
+    let query = document.getElementById('search').value
+    fetch(`/api/employee-db/search?${query}`)
+        .then(res => res.json())
+        .then(res => console.log(res))
+}
