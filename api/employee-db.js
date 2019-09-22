@@ -41,11 +41,11 @@ const patchEmployee = (req, res, next) => {
 	if (searchResult) {
 		let editedEmployee = {...searchResult, ...data}
 		editedEmployee.id = uniqid()
-		employees.splice(1, index)
+		employees.splice(index, 1)
 		employees.push(editedEmployee)
-		res.json('usuario editado')
+		res.status('201').json('usuario editado')
 	} else {
-		res.status(404).send('no encontramos al usuario');
+		res.status('404').send('no encontramos al usuario');
 	}
 	next()
 }
@@ -55,9 +55,9 @@ const deleteEmployee = (req, res, next) => {
 	let index = employees.findIndex(e => e.id === req.params.id)
 	if (searchResult) {
 		employees.splice(index, 1)
-		res.status('201').json('Se eliminó el empleado')
+		res.status('200').json('Se eliminó el empleado')
 	} else {
-		res.send('No se pudo eliminar el empleado')
+		res.status('400').send('No se pudo eliminar el empleado')
 	}
 	next()
 }
