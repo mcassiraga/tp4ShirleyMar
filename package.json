@@ -1,15 +1,18 @@
 {
-  "name": "tp4shirleymar",
+  "name": "tp5shirleymar",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "build-css": "sass public/styles/styles.scss public/styles/styles.css --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "4.17.1"
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "uniqid": "5.0.3"
   }
 }
