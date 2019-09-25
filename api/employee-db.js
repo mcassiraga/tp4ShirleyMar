@@ -12,8 +12,9 @@ const loadEmployees = (req, res, next) => {
 }
 
 const searchEmployees = (req, res, next) => {
-	let searchResults = employees.filter(e => e.name === req.query || e.email === req.query || e.address === req.query || e.phone === req.query)
-	if (searchResults.length > 0) {
+	console.log(req.query)
+	let searchResults = employees.filter(e => Object.keys(e).find(prop => e[prop].includes(req.query)))
+	if (searchResults) {
 		res.json(searchResults)
 	} else {
 		res.send('Ningun resultado')
@@ -50,7 +51,7 @@ const patchEmployee = (req, res, next) => {
 
 	if (searchResult) {
 		let editedEmployee = {...searchResult, ...data}
-		editedEmployee.id = uniqid()
+		editedEmployee.id = searchResult.id
 		employees.splice(index, 1)
 		employees.push(editedEmployee)
 		res.status('201').json('usuario editado')
