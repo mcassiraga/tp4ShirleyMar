@@ -16,7 +16,7 @@ const searchEmployees = (req, res, next) => {
 	if (searchResults.length !== 0) {
 		res.json({searchResults})
 	} else {
-		res.status('404').send('Ningun resultado')
+		res.status('404').json('Ningun resultado')
 	}
 	next()
 }
@@ -28,7 +28,7 @@ const postEmployee = (req, res, next) => {
 		employees.push(data)
 		res.status('201').json(`recibido con el id ${data.id}`)
 	} else {
-		res.status('400').send('fijate que pusiste mal los datos, ameo.')
+		res.status('400').send('Revise los datos')
 	}
 	next()
 }

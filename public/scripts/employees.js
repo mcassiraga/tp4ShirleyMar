@@ -69,7 +69,7 @@ const addEmployee = payload => {
             initialize()
         })
         .catch(error => {
-            // acá van otras cositas
+            console.log(res)
         });
 }
 
@@ -123,7 +123,6 @@ const handleKeyPress = event => {
     let query = event.target.value
     if (event.code === 'Enter' && query.length !== 0) {
         filterEmployees()
-        printEmployees(res.searchResults)
     } else if (event.code === 'Enter' && query.length === 0) {
         getEmployees()
     }

@@ -24,44 +24,43 @@ body {
   color: #566787;
   background: #f5f5f5;
 }
-
-.container {
+body .container {
   width: 85vw;
+  min-width: 750px;
   margin: 0 auto;
   box-sizing: border-box;
 }
-
-.table-wrapper {
+body .container .table-wrapper {
   background: #fff;
   padding: 20px 25px;
   margin: 40px 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-.table-wrapper .table-title {
+body .container .table-wrapper .table-title {
   background: #435d7d;
   color: #fff;
   padding: 16px 30px;
   margin: -20px -25px 10px;
   border-radius: 3px 3px 0 0;
 }
-.table-wrapper .table-title .title-wrapper {
+body .container .table-wrapper .table-title .title-wrapper {
   display: flex;
   justify-content: space-between;
 }
-.table-wrapper .table-title .title-wrapper .title {
+body .container .table-wrapper .table-title .title-wrapper .title {
   font-size: 24px;
   line-height: 36px;
 }
-.table-wrapper .table-title .title-wrapper .title h2 {
+body .container .table-wrapper .table-title .title-wrapper .title h2 {
   font-weight: 300;
 }
-.table-wrapper .table-title .title-wrapper .title b {
+body .container .table-wrapper .table-title .title-wrapper .title b {
   font-weight: 700;
 }
-.table-wrapper .table-title .title-wrapper .btn-container {
+body .container .table-wrapper .table-title .title-wrapper .btn-container {
   margin-left: 10px;
 }
-.table-wrapper .table-title .title-wrapper .btn-container .btn {
+body .container .table-wrapper .table-title .title-wrapper .btn-container .btn {
   font-size: 13px;
   border-radius: 2px;
   background-color: #5cb85c;
@@ -72,14 +71,14 @@ body {
   justify-content: space-between;
   cursor: pointer;
 }
-.table-wrapper .table-title .title-wrapper .btn-container .btn .material-icons {
+body .container .table-wrapper .table-title .title-wrapper .btn-container .btn .material-icons {
   margin-right: 5px;
 }
-
-.row {
+body .container .row {
   overflow: hidden;
+  padding-bottom: 10px;
 }
-.row #search {
+body .container .row #search {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 6px 12px;
@@ -88,28 +87,31 @@ body {
   float: right;
   margin-top: 20px;
 }
-
-.table {
+body .container .row #search:focus {
+  border-color: #66afe9;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+body .container .table {
   margin: 20px 0;
   width: 100%;
   font-size: 13px;
   border-spacing: 0;
   border-collapse: collapse;
 }
-.table th, .table td {
-  padding: 12px 15px;
+body .container .table th, body .container .table td {
+  padding: 12px 15px 24px 15px;
   text-align: left;
 }
-.table thead tr th {
+body .container .table thead tr th {
   border-bottom: 2px solid #ddd;
 }
-.table thead tr th .custom-checkbox {
+body .container .table thead tr th .custom-checkbox {
   position: relative;
 }
-.table thead tr th .custom-checkbox #select-all {
+body .container .table thead tr th .custom-checkbox #select-all {
   opacity: 0;
 }
-.table thead tr th .custom-checkbox label::before {
+body .container .table thead tr th .custom-checkbox label::before {
   content: "";
   margin-right: 10px;
   display: inline-block;
@@ -124,10 +126,10 @@ body {
   top: 0;
   left: 0;
 }
-.table thead tr th .custom-checkbox #select-all:checked + label::before {
+body .container .table thead tr th .custom-checkbox #select-all:checked + label::before {
   background-color: #03a9f4;
 }
-.table thead tr th .custom-checkbox #select-all:checked + label::after {
+body .container .table thead tr th .custom-checkbox #select-all:checked + label::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -139,29 +141,26 @@ body {
   z-index: 3;
   transform: rotateZ(45deg);
 }
-.table tbody tr:nth-of-type(2n+1) {
+body .container .table tbody tr:nth-of-type(2n+1) {
   background-color: #fcfcfc;
 }
-.table tbody tr:hover {
+body .container .table tbody tr:hover {
   background: #f5f5f5;
 }
-.table tbody tr td {
-  padding-bottom: 25px;
-}
-.table tbody tr .option-btns {
+body .container .table tbody tr .option-btns {
   padding-left: 22px;
   cursor: pointer;
 }
-.table tbody tr .option-btns .edit {
+body .container .table tbody tr .option-btns .edit {
   color: #ffc107;
 }
-.table tbody tr .option-btns .delete {
+body .container .table tbody tr .option-btns .delete {
   color: #f44336;
 }
-.table tbody tr .custom-checkbox label {
+body .container .table tbody tr .custom-checkbox label {
   position: relative;
 }
-.table tbody tr .custom-checkbox label::before {
+body .container .table tbody tr .custom-checkbox label::before {
   content: "";
   margin-right: 10px;
   display: inline-block;
@@ -176,23 +175,7 @@ body {
   top: 0;
   left: -20px;
 }
-.table tbody tr .custom-checkbox:checked + label::before {
-  background-color: #03a9f4;
-}
-.table tbody tr .custom-checkbox:checked + label::after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 1px;
-  width: 5px;
-  height: 11px;
-  border: solid #fff;
-  border-width: 0 3px 3px 0;
-  z-index: 3;
-  transform: rotateZ(45deg);
-}
-
-.modal {
+body .container .modal {
   position: fixed;
   left: 0;
   top: 0;
@@ -204,8 +187,7 @@ body {
   transform: scale(1.1);
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
-
-.modal-content {
+body .container .modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -216,37 +198,37 @@ body {
   border-radius: 0.2rem;
   padding: 20px 30px;
 }
-.modal-content .modal-header {
+body .container .modal-content .modal-header {
   border-bottom: 1px solid #e5e5e5;
   padding-bottom: 15px;
   display: flex;
   justify-content: space-between;
   font-size: 18px;
 }
-.modal-content .modal-header .close-button {
+body .container .modal-content .modal-header .close-button {
   float: right;
   width: 1.5rem;
   line-height: 1.5rem;
   text-align: center;
   cursor: pointer;
 }
-.modal-content .modal-header .close-button:hover {
+body .container .modal-content .modal-header .close-button:hover {
   background-color: darkgray;
 }
-.modal-content .modal-body {
+body .container .modal-content .modal-body {
   margin: 30px 0 35px 0;
   font-size: 13px;
 }
-.modal-content .modal-body .form-group {
+body .container .modal-content .modal-body .form-group {
   margin: 0 27px 15px 0;
 }
-.modal-content .modal-body .form-group label {
+body .container .modal-content .modal-body .form-group label {
   font-size: 13px;
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
 }
-.modal-content .modal-body .form-group .form-control {
+body .container .modal-content .modal-body .form-group .form-control {
   display: block;
   width: 100%;
   height: 34px;
@@ -259,17 +241,17 @@ body {
   border: 1px solid #ccc;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-.modal-content .modal-body .warning {
+body .container .modal-content .modal-body .warning {
   margin-top: 15px;
   color: #8a6d3b;
   font-size: 12px;
   display: block;
 }
-.modal-content .modal-footer {
+body .container .modal-content .modal-footer {
   border-radius: 0 0 3px 3px;
   text-align: right;
 }
-.modal-content .modal-footer .btn {
+body .container .modal-content .modal-footer .btn {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -285,28 +267,27 @@ body {
   background-image: none;
   border: 1px solid transparent;
 }
-.modal-content .modal-footer .btn-success {
+body .container .modal-content .modal-footer .btn-success {
   background-color: #5cb85c;
   border-color: #4cae4c;
   color: #fff;
 }
-.modal-content .modal-footer .btn-default {
+body .container .modal-content .modal-footer .btn-default {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
 }
-.modal-content .modal-footer .btn-delete {
+body .container .modal-content .modal-footer .btn-delete {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
 }
-.modal-content .modal-footer .btn-edit {
+body .container .modal-content .modal-footer .btn-edit {
   color: #fff;
   background-color: #5bc0de;
   border-color: #46b8da;
 }
-
-.show-modal {
+body .container .show-modal {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
