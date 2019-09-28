@@ -124,12 +124,14 @@ const handleKeyPress = event => {
     if (event.code === 'Enter' && query.length !== 0) {
         filterEmployees()
         printEmployees(res.searchResults)
+    } else if (event.code === 'Enter' && query.length === 0) {
+        getEmployees()
     }
 }
 
 const filterEmployees = () => {
     let query = document.getElementById('search').value
-    fetch(`/api/employee-db/${query}`)
+    fetch(`/api/employee-db/search/${query}`)
         .then(res => res.json())
         .then(res => printEmployees(res.searchResults))
 }
