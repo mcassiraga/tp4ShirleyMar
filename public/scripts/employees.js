@@ -123,6 +123,7 @@ const handleKeyPress = event => {
     let query = event.target.value
     if (event.code === 'Enter' && query.length !== 0) {
         filterEmployees()
+        printEmployees(res.searchResults)
     }
 }
 
