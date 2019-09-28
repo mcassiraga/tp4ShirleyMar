@@ -120,14 +120,15 @@ const deleteEmployee = id => {
 
 // FILTRAR EMPLEADOS
 const handleKeyPress = event => {
-    if (event.code === 'Enter') {
-        filterEmployees() // hay que armar esta funcion
+    let query = event.target.value
+    if (event.code === 'Enter' && query.length !== 0) {
+        filterEmployees()
     }
 }
 
 const filterEmployees = () => {
     let query = document.getElementById('search').value
-    fetch(`/api/employee-db/search?${query}`)
+    fetch(`/api/employee-db/${query}`)
         .then(res => res.json())
-        .then(res => console.log(res))
+        .then(res => printEmployees(res.searchResults))
 }

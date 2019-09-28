@@ -12,12 +12,11 @@ const loadEmployees = (req, res, next) => {
 }
 
 const searchEmployees = (req, res, next) => {
-	console.log(req.query)
-	let searchResults = employees.filter(e => Object.keys(e).find(prop => e[prop].includes(req.query)))
-	if (searchResults) {
-		res.json(searchResults)
+	let searchResults = employees.filter(e => Object.keys(e).find(prop => e[prop].includes(req.params.query)))
+	if (searchResults.length !== 0) {
+		res.json({searchResults})
 	} else {
-		res.send('Ningun resultado')
+		res.status('404').send('Ningun resultado')
 	}
 	next()
 }
@@ -29,7 +28,7 @@ const postEmployee = (req, res, next) => {
 		employees.push(data)
 		res.status('201').json(`recibido con el id ${data.id}`)
 	} else {
-		res.status('400').json('fijate que pusiste mal los datos, ameo.')
+		res.status('400').send('fijate que pusiste mal los datos, ameo.')
 	}
 	next()
 }
@@ -39,7 +38,7 @@ const getEmployeeByID = (req, res, next) => {
     if (searchResult) {
         res.json(searchResult)
     } else {
-        res.status(404).send('No existe tal usuario')
+        res.status('404').send('No existe tal usuario')
 	}
 	next()
 }
