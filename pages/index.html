@@ -62,7 +62,7 @@
                     <p>Agregar empleado</p>
                     <span class="close-button">&times;</span>
                 </div>
-                <form id="form">
+                <form id="form" onsubmit="return validateForm()">
                     <div class="modal-body">
 
                         <div class="form-group">
@@ -113,7 +113,7 @@
                     <p>Editar empleado</p>
                     <span class="close-button close-edit-button">&times;</span>
                 </div>
-                <form id="edit-form">
+                <form id="edit-form" onsubmit="return validateFormEdit()">
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nombre</label>
