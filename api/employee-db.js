@@ -1,9 +1,9 @@
 const uniqid = require('uniqid')
 
 const employees = [
-    { id: '1', name: 'calixta', email: 'calix@ta.com', address: 'fhsdkflah', phone: '79875912' },
-    { id: '2', name: 'rony', email: 'dgdd@ta.com', address: 'fhsdkflah', phone: '79875912' },
-    { id: '3', name: 'alex', email: 'alex@ta.com', address: 'fhsdkflah', phone: '79875912' }
+    { id: '1', name: 'Calixta Ochoa', email: 'calixtao@hotmail.com', address: '61 Pond St, Natick, Massachusetts', phone: '5086553453672' },
+    { id: '2', name: 'Martín Gómez', email: 'gomezmartin@gmail.com', address: '12033 Falcon Rd, Crandall, Texas', phone: '7987591292475' },
+    { id: '3', name: 'Alejandra Fernández', email: 'alejandrag@gmail.com', address: '25203 Golf Lake Cir, Bonita Springs, Florida', phone: '1224398344577' }
 ]
 
 const loadEmployees = (req, res, next) => {
@@ -16,7 +16,7 @@ const searchEmployees = (req, res, next) => {
 	if (searchResults.length !== 0) {
 		res.json({searchResults})
 	} else {
-		res.status('404').json('Ningun resultado')
+		res.status('404').json('Ningún resultado')
 	}
 	next()
 }
@@ -26,7 +26,7 @@ const postEmployee = (req, res, next) => {
 	if (data) {
 		data.id = uniqid()
 		employees.push(data)
-		res.status('201').json(`recibido con el id ${data.id}`)
+		res.status('201').json(`Recibido con el id ${data.id}`)
 	} else {
 		res.status('400').send('Revise los datos')
 	}
@@ -53,9 +53,9 @@ const patchEmployee = (req, res, next) => {
 		editedEmployee.id = searchResult.id
 		employees.splice(index, 1)
 		employees.push(editedEmployee)
-		res.status('201').json('usuario editado')
+		res.status('201').json('Usuario editado')
 	} else {
-		res.status('404').send('no encontramos al usuario');
+		res.status('404').send('No encontramos al usuario');
 	}
 	next()
 }

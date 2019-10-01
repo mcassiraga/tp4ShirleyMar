@@ -13,7 +13,7 @@
     <title>App Empleados</title>
 </head>
 
-<body onload="initialize()">
+<body onload="getEmployees()">
     <div class="container">
         <div class="table-wrapper">
             <div class="table-title">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" onclick="toggleModal()" value="Cancelar" />
-                        <input type="submit" class="btn btn-success" onclick="validateForm()" value="Agregar" />
+                        <input type="submit" class="btn btn-success" onclick="addEmployee()" value="Agregar" />
                     </div>
                 </form>
             </div>

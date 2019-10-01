@@ -1,7 +1,3 @@
-const initialize = () => {
-    getEmployees()
-}
-
 const getEmployees = () => {
     fetch('/api/employee-db')
     .then(res => res.json())
@@ -37,10 +33,33 @@ const createElements = ({id, name, email, address, phone}) => `
   </tr>
 `
 
-// VALIDAR DATOS - hay que validar dos forms!
-const validateForm = () => {
-    const form = document.getElementById('form')
+// VALIDAR DATOS
+const validateForm = form => {
     const {name, email, address, phone} = form
+
+    if (name.value === null || name.value.length === 0 || /^\s+$/.test(name.value)) {
+        alert('ERROR: Ingrese un nombre válido')
+        return false
+    } else if (!(/\S+@\S+\.\S+/.test(email.value))) {
+        alert('ERROR: Ingrese un correo válido')
+        return false
+    } else if (address.value === null || address.value.length === 0 || /^\s+$/.test(address.value)) {
+        alert('ERROR: Ingrese una dirección válida')
+        return false
+    } else if (!/^\d{13}$/.test(phone.value)) {
+        alert('ERROR: Ingrese un número de teléfono de 13 dígitos')
+        return false
+    } else {
+        return true
+    }
+}
+
+// CREAR EMPLEADOS
+const addEmployee = () => {
+    event.preventDefault()
+
+    const addForm = document.getElementById('form')
+    const {name, email, address, phone} = addForm
     const payload = {
         name: name.value,
         email: email.value,
@@ -48,35 +67,27 @@ const validateForm = () => {
         phone: phone.value
     }
 
-    addEmployee(payload)
-}
-
-// CREAR EMPLEADOS
-const addEmployee = payload => {
-    event.preventDefault()
-
-    fetch('/api/employee-db', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        })
-        .then(res => res.json())
-        .then(res => {
-            console.log(res)
-            toggleModal()
-            initialize()
-        })
-        .catch(error => {
-            console.log(res)
-        });
+    if (validateForm(addForm)) {
+        fetch('/api/employee-db', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                toggleModal()
+                getEmployees()
+            })
+    }
 }
 
 // EDITAR EMPLEADOS
 const editEmployee = id => {
-    const form = document.getElementById('edit-form')
-    const {name, email, address, phone} = form
+    const editForm = document.getElementById('edit-form')
+    const {name, email, address, phone} = editForm
     const data = {
         name: name.value,
         email: email.value,
@@ -84,22 +95,21 @@ const editEmployee = id => {
         phone: phone.value
     }
 
-	fetch(`/api/employee-db/${id}`, {
-		method: 'PATCH',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(data)
-	})
-		.then(res => res.json())
-		.then(res => {
-			console.log(res);
-            toggleEditModal(id)
-			initialize()
-		})
-		.catch(error => {
-			// acá van otras cositas
-		})
+    if (validateForm(editForm)) {
+        fetch(`/api/employee-db/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                toggleEditModal(id)
+                getEmployees()
+            })
+    }
 }
 
 // ELIMINAR EMPLEADO
@@ -114,7 +124,7 @@ const deleteEmployee = id => {
     .then(res => {
         console.log(res)
         toggleDeleteModal()
-        initialize()
+        getEmployees()
     })
 }
 
