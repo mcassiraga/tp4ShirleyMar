@@ -1,2 +1,1 @@
-archivos css y js bien linkeadosen master y en marina.
-usar nodemon!!
+El TP se encuentra terminado en master.
