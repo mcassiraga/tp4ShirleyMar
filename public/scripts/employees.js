@@ -48,7 +48,37 @@ const validateForm = () => {
         phone: phone.value
     }
 
+
+    const txtName = document.getElementById('name').value;
+    const txtEmail = document.getElementById('email').value;
+    const txtAddress = document.getElementById('address').value;
+    const txtPhone = document.getElementById('phone').value;
+    
+    //Test campo obligatorio
+    if(txtName == null || txtName.length == 0 || /^\s+$/.test(txtName)){
+        alert('ERROR: El campo nombre no debe ir vacío o lleno de solamente espacios en blanco');
+        return false;
+    }
+    
+    //Test correo
+    if(!(/\S+@\S+\.\S+/.test(txtEmail))){
+        alert('ERROR: Debe escribir un correo válido');
+        return false;
+    }
+
+    //Test address
+    if(txtAddress == null || txtAddress.length == 0 || /^\s+$/.test(txtAddress)){
+        alert('ERROR: El campo dirección no debe ir vacío o lleno de solamente espacios en blanco');
+        return false;
+    }
+
+    //Test phone
+    if(!/^\d{8}$/.test(txtPhone)){
+        alert('ERROR: Debe ingresar un número de teléfono de 8 dígitos');
+        return false;
+    }
     addEmployee(payload)
+
 }
 
 // CREAR EMPLEADOS
